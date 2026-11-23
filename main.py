@@ -3,7 +3,7 @@ from array import array
 V={"P":1,"N":2,"B":3,"R":4,"Q":5,"K":6}
 KN=(33,31,18,14,-14,-18,-31,-33);KI=(1,-1,16,-16,15,17,-15,-17,2,-2);BS=(15,17,-15,-17);RS=(1,-1,16,-16)
 B=10**6
-D=int(os.environ.get("ENGINE_DEPTH","4"))
+D=int(os.environ.get("ENGINE_DEPTH","3"))
 
 def P(f):
  b=array('b',[0]*128)
@@ -81,7 +81,7 @@ def ev(b):
  return s
 
 def ab(b,sd,d,a,Bb):
- if d==0: return ev(b)
+ if d==0: return ev(b) if sd>0 else -ev(b)
  best=-B
  for mv in G(b,sd):
   i,j=mv[0],mv[1]
